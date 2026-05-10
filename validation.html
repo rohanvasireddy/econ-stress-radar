@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Validation | Local Economic Stress Radar</title>
+    <link rel="stylesheet" href="src/styles.css?v=5" />
+    <script src="data/stress_data.js" defer></script>
+    <script src="src/app.js?v=5" defer></script>
+  </head>
+  <body data-page="validation">
+    <header class="app-header">
+      <a class="brand" href="index.html" aria-label="Local Economic Stress Radar home">
+        <span class="brand-mark" aria-hidden="true">LESR</span>
+        <span>
+          <span class="brand-title">Economic Stress Radar</span>
+          <span class="brand-subtitle">Prototype v0.5</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Primary">
+        <a href="index.html" data-nav="radar">Radar</a>
+        <a href="area.html" data-nav="area">Area Detail</a>
+        <a href="validation.html" data-nav="validation">Validation</a>
+        <a href="sources.html" data-nav="sources">Sources</a>
+        <a href="roadmap.html" data-nav="roadmap">Roadmap</a>
+      </nav>
+
+      <div class="meta-chips" aria-label="Dataset status">
+        <span data-latest-month>Latest month</span>
+        <span data-data-mode>Demo data</span>
+      </div>
+    </header>
+
+    <main class="page-shell narrow">
+      <section class="page-title">
+        <div>
+          <p class="eyebrow">Validation harness</p>
+          <h1>Prove the radar before making it fancy.</h1>
+        </div>
+        <p>
+          The first benchmark should use observable outcomes: future unemployment spikes and payroll declines.
+        </p>
+      </section>
+
+      <section class="validation-cockpit" aria-label="Validation cockpit">
+        <section class="panel validation-hero">
+          <div>
+            <p class="eyebrow">Trust cockpit</p>
+            <h2>Is this signal ready to be trusted?</h2>
+            <p class="body-copy">
+              Demo score: workflow only. Production gate: vintage-safe data, stable labels, and segment error checks.
+            </p>
+          </div>
+          <div id="validationGauge" class="validation-gauge"></div>
+        </section>
+
+        <section id="validationSummaryCards" class="validation-summary" aria-label="Validation summary cards"></section>
+      </section>
+
+      <section class="decision-deck">
+        <article class="decision-card decision-card-primary">
+          <span class="decision-kicker">Current gate</span>
+          <strong>Do not ship model claims until vintage leakage is controlled.</strong>
+          <small>Demo metrics are useful for UI workflow only; real validation needs release-date discipline.</small>
+        </article>
+        <article class="decision-card">
+          <span class="decision-kicker">Proof target</span>
+          <strong>Predict observable labor deterioration.</strong>
+          <small>Use unemployment spikes and payroll declines before composite distress labels.</small>
+        </article>
+        <article class="decision-card">
+          <span class="decision-kicker">Success bar</span>
+          <strong>Lift plus interpretability.</strong>
+          <small>Beat the transparent score without losing explainable local drivers.</small>
+        </article>
+      </section>
+
+      <section class="analysis-layout">
+        <section class="panel">
+          <p class="eyebrow">Demo backtest</p>
+          <h2>Current target</h2>
+          <div id="backtestStats" class="stat-grid"></div>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Design guardrail</p>
+          <h2>Vintage discipline</h2>
+          <p class="body-copy">
+            Real results should only use data that would have been available at each prediction date.
+            Revised series need release-lag masking until true vintage snapshots exist.
+          </p>
+          <div id="backtestNotes" class="note-list"></div>
+        </section>
+
+        <section class="panel wide-panel validation-chart-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Performance shape</p>
+              <h2>Lift and precision-recall story</h2>
+            </div>
+          </div>
+          <div class="chart-layout">
+            <div id="validationLiftChart" class="validation-chart"></div>
+            <div id="validationConfusionMatrix" class="confusion-panel"></div>
+          </div>
+        </section>
+
+        <section class="panel wide-panel">
+          <p class="eyebrow">Model governance</p>
+          <h2>Model comparison ladder</h2>
+          <div id="validationModelTable" class="data-table model-table"></div>
+        </section>
+
+        <section class="panel wide-panel">
+          <p class="eyebrow">Leakage defense</p>
+          <h2>Availability timeline</h2>
+          <div class="timeline-grid">
+            <div><span>01</span><strong>Source release</strong><small>Record publication date, not just observation date.</small></div>
+            <div><span>02</span><strong>Availability mask</strong><small>Hide features unavailable on the score date.</small></div>
+            <div><span>03</span><strong>Feature freeze</strong><small>Persist inputs, hashes, and scoring code version.</small></div>
+            <div><span>04</span><strong>Outcome window</strong><small>Observe labor deterioration after the prediction date.</small></div>
+            <div><span>05</span><strong>Error audit</strong><small>Review misses by region, size, and driver family.</small></div>
+          </div>
+        </section>
+
+        <section class="panel wide-panel">
+          <p class="eyebrow">Readiness gates</p>
+          <h2>What must be true before this becomes a claim</h2>
+          <div id="validationGateList" class="gate-grid"></div>
+        </section>
+
+        <section class="panel wide-panel">
+          <p class="eyebrow">Model sequence</p>
+          <h2>Keep the first version interpretable</h2>
+          <div class="method-grid">
+            <div class="method-step">
+              <strong>1. Composite score</strong>
+              <span>Transparent weighted score, manually inspectable by region.</span>
+            </div>
+            <div class="method-step">
+              <strong>2. Logistic model</strong>
+              <span>Regularized baseline against unemployment spike and payroll decline labels.</span>
+            </div>
+            <div class="method-step">
+              <strong>3. Tree model</strong>
+              <span>Add LightGBM only after baseline lift and leakage checks are solid.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel wide-panel">
+          <p class="eyebrow">Backtest design</p>
+          <h2>Rolling-origin protocol</h2>
+          <div class="protocol-grid">
+            <div><strong>1. Snapshot</strong><span>Freeze features exactly as they would have appeared on each scoring date.</span></div>
+            <div><strong>2. Score</strong><span>Rank all eligible CBSAs and counties with only available data.</span></div>
+            <div><strong>3. Observe</strong><span>Wait three to six months for unemployment and payroll outcomes.</span></div>
+            <div><strong>4. Compare</strong><span>Track lift, precision, recall, calibration, and rank stability by geography type.</span></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Label definitions</p>
+          <h2>First observable outcomes</h2>
+          <div class="checklist-grid">
+            <div><strong>Unemployment spike</strong><span>Local unemployment rises at least 1.0 percentage point over six months.</span></div>
+            <div><strong>Payroll decline</strong><span>Employment falls year over year or turns negative for two consecutive releases.</span></div>
+            <div><strong>Claims shock</strong><span>Initial claims index breaches local historical threshold.</span></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Failure modes</p>
+          <h2>Leakage checklist</h2>
+          <div class="checklist-grid">
+            <div><strong>Release lag</strong><span>Quarterly QCEW and annual controls must not be visible before publication.</span></div>
+            <div><strong>Revision drift</strong><span>Revised historical series need vintage storage or masking.</span></div>
+            <div><strong>Geography survivorship</strong><span>Metro definitions and county mappings need versioned crosswalks.</span></div>
+          </div>
+        </section>
+
+        <section class="panel wide-panel table-panel">
+          <p class="eyebrow">Audit matrix</p>
+          <h2>Validation questions by audience</h2>
+          <div class="data-table validation-audit-table">
+            <div class="table-row table-head"><span>Audience</span><span>Question</span><span>Evidence needed</span><span>Current answer</span></div>
+            <div class="table-row"><span>Economic development team</span><span>Why did this place rank high?</span><span>Driver decomposition and source trace.</span><span>Visible in area detail.</span></div>
+            <div class="table-row"><span>Data scientist</span><span>Does the signal beat simple baselines?</span><span>Rolling-origin lift, recall, calibration.</span><span>Demo only; real test pending.</span></div>
+            <div class="table-row"><span>Policy user</span><span>Can I act before the event is obvious?</span><span>Median lead time and miss review.</span><span>Demo lead time shown.</span></div>
+            <div class="table-row"><span>Product buyer</span><span>Can I trust the provenance?</span><span>Release calendar, hashes, revision log.</span><span>Designed; not ingested yet.</span></div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sources | Local Economic Stress Radar</title>
+    <link rel="stylesheet" href="src/styles.css?v=5" />
+    <script src="data/stress_data.js" defer></script>
+    <script src="src/app.js?v=5" defer></script>
+  </head>
+  <body data-page="sources">
+    <header class="app-header">
+      <a class="brand" href="index.html" aria-label="Local Economic Stress Radar home">
+        <span class="brand-mark" aria-hidden="true">LESR</span>
+        <span>
+          <span class="brand-title">Economic Stress Radar</span>
+          <span class="brand-subtitle">Prototype v0.5</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Primary">
+        <a href="index.html" data-nav="radar">Radar</a>
+        <a href="area.html" data-nav="area">Area Detail</a>
+        <a href="validation.html" data-nav="validation">Validation</a>
+        <a href="sources.html" data-nav="sources">Sources</a>
+        <a href="roadmap.html" data-nav="roadmap">Roadmap</a>
+      </nav>
+
+      <div class="meta-chips" aria-label="Dataset status">
+        <span data-latest-month>Latest month</span>
+        <span data-data-mode>Demo data</span>
+      </div>
+    </header>
+
+    <main class="page-shell narrow">
+      <section class="page-title">
+        <div>
+          <p class="eyebrow">Data provenance</p>
+          <h1>Source plan for the real pipeline.</h1>
+        </div>
+        <p>
+          The demo dataset keeps these contracts visible so real ingestion can replace synthetic values cleanly.
+        </p>
+      </section>
+
+      <section class="decision-deck">
+        <article class="decision-card decision-card-primary">
+          <span class="decision-kicker">Build first</span>
+          <strong>LAUS monthly labor ingestion.</strong>
+          <small>It is the fastest route from demo to real signal because it updates monthly and maps to the first label.</small>
+        </article>
+        <article class="decision-card">
+          <span class="decision-kicker">Hardest risk</span>
+          <strong>Release-date metadata.</strong>
+          <small>Every observation needs an availability date before any backtest is credible.</small>
+        </article>
+        <article class="decision-card">
+          <span class="decision-kicker">Do later</span>
+          <strong>Paid or exotic datasets.</strong>
+          <small>Public-source discipline should prove the shape before spending money on data.</small>
+        </article>
+      </section>
+
+      <section class="sources-layout">
+        <section class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Planned feeds</p>
+              <h2>Public data sources</h2>
+            </div>
+          </div>
+          <div id="sourceList" class="source-list"></div>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Data contract</p>
+          <h2>What each feed must provide</h2>
+          <div class="contract-list">
+            <div><strong>Observation date</strong><span>Month or quarter being measured.</span></div>
+            <div><strong>Release date</strong><span>When a builder could have actually seen it.</span></div>
+            <div><strong>Geography key</strong><span>CBSA or county identifier that survives merges.</span></div>
+            <div><strong>Revision policy</strong><span>Whether historical values can change after publication.</span></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="sources-layout">
+        <section class="panel">
+          <p class="eyebrow">Freshness</p>
+          <h2>Release calendar</h2>
+          <div id="releaseCalendar" class="release-calendar"></div>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Build order</p>
+          <h2>Ingestion priority</h2>
+          <div id="sourcePriority" class="priority-list"></div>
+        </section>
+      </section>
+
+      <section class="panel table-panel">
+        <p class="eyebrow">Coverage standard</p>
+        <h2>Minimum production readiness checks</h2>
+        <div class="data-table three-col">
+          <div class="table-row table-head"><span>Check</span><span>Why it matters</span><span>Pass condition</span></div>
+          <div class="table-row"><span>County coverage</span><span>County drilldowns need stable local identifiers.</span><span>95%+ population covered</span></div>
+          <div class="table-row"><span>Release dates</span><span>Backtests fail if future data leaks backward.</span><span>Every observation has availability date</span></div>
+          <div class="table-row"><span>Null policy</span><span>Small counties and late releases create gaps.</span><span>Explicit imputation or exclusion rule</span></div>
+          <div class="table-row"><span>Revision log</span><span>Public datasets can revise history.</span><span>Snapshot hash stored per run</span></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

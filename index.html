@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local Economic Stress Radar</title>
+    <link rel="stylesheet" href="src/styles.css?v=5" />
+    <script src="data/stress_data.js" defer></script>
+    <script src="src/app.js?v=5" defer></script>
+  </head>
+  <body data-page="radar">
+    <header class="app-header">
+      <a class="brand" href="index.html" aria-label="Local Economic Stress Radar home">
+        <span class="brand-mark" aria-hidden="true">LESR</span>
+        <span>
+          <span class="brand-title">Economic Stress Radar</span>
+          <span class="brand-subtitle">Prototype v0.5</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Primary">
+        <a href="index.html" data-nav="radar">Radar</a>
+        <a href="area.html" data-nav="area">Area Detail</a>
+        <a href="validation.html" data-nav="validation">Validation</a>
+        <a href="sources.html" data-nav="sources">Sources</a>
+        <a href="roadmap.html" data-nav="roadmap">Roadmap</a>
+      </nav>
+
+      <div class="meta-chips" aria-label="Dataset status">
+        <span data-latest-month>Latest month</span>
+        <span data-data-mode>Demo data</span>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-title">
+        <div>
+          <p class="eyebrow">National radar</p>
+          <h1>Spot local economic fragility before it becomes obvious.</h1>
+        </div>
+        <p>
+          CBSA-first stress scoring with counties shown when signal quality is strong enough to inspect.
+        </p>
+      </section>
+
+      <section id="radarBrief" class="decision-deck" aria-label="Current operating brief"></section>
+
+      <section class="control-bar" aria-label="Radar filters">
+        <label>
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Metro, county, or state" />
+        </label>
+
+        <label>
+          <span>Geography</span>
+          <select id="levelFilter">
+            <option value="all">All</option>
+            <option value="cbsa">CBSAs</option>
+            <option value="county">Counties</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Risk band</span>
+          <select id="riskFilter">
+            <option value="all">All bands</option>
+            <option value="high">High</option>
+            <option value="watch">Watch</option>
+            <option value="stable">Stable</option>
+          </select>
+        </label>
+
+        <div class="segmented" role="group" aria-label="Map metric">
+          <button class="metric-tab active" data-metric="stress_score" type="button">Score</button>
+          <button class="metric-tab" data-metric="change_3m" type="button">3 mo change</button>
+          <button class="metric-tab" data-metric="uncertainty" type="button">Uncertainty</button>
+        </div>
+      </section>
+
+      <section class="metric-strip" aria-label="Summary metrics">
+        <div class="metric-tile">
+          <span>High-risk places</span>
+          <strong id="highRiskCount">0</strong>
+        </div>
+        <div class="metric-tile">
+          <span>Rising over 3 mo</span>
+          <strong id="risingCount">0</strong>
+        </div>
+        <div class="metric-tile">
+          <span>Median score</span>
+          <strong id="medianScore">0</strong>
+        </div>
+        <div class="metric-tile">
+          <span>Demo lead time</span>
+          <strong id="leadTime">0 mo</strong>
+        </div>
+      </section>
+
+      <section class="radar-layout">
+        <section class="panel map-panel map-panel-wide" aria-label="National stress map">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">National view</p>
+              <h2 id="mapTitle">Stress score</h2>
+            </div>
+            <div class="legend">
+              <span><i class="legend-dot low"></i>Stable</span>
+              <span><i class="legend-dot mid"></i>Watch</span>
+              <span><i class="legend-dot high"></i>High</span>
+            </div>
+          </div>
+          <div class="map-frame">
+            <svg id="stressMap" viewBox="0 0 100 80" role="img" aria-label="Prototype US economic stress map"></svg>
+          </div>
+          <div id="mapNarrative" class="map-narrative"></div>
+        </section>
+
+        <section class="panel rank-panel" aria-label="Ranked areas">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Ranked movers</p>
+              <h2>Areas to watch</h2>
+            </div>
+            <span id="resultCount" class="count-pill">0</span>
+          </div>
+          <div id="rankList" class="rank-list"></div>
+        </section>
+      </section>
+
+      <section class="insight-grid" aria-label="Radar diagnostics">
+        <section class="panel">
+          <p class="eyebrow">Portfolio mix</p>
+          <h2>Risk distribution</h2>
+          <div id="riskMix" class="bar-list"></div>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Signal drivers</p>
+          <h2>What is moving the score</h2>
+          <div id="driverMix" class="bar-list"></div>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Momentum</p>
+          <h2>Fastest deterioration</h2>
+          <div id="moverList" class="mini-list"></div>
+        </section>
+      </section>
+
+      <section class="panel table-panel" aria-label="Regional stress table">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Screening table</p>
+            <h2>Top stress candidates</h2>
+          </div>
+        </div>
+        <div id="regionalTable" class="data-table"></div>
+      </section>
+    </main>
+  </body>
+</html>

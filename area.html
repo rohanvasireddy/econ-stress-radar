@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Area Detail | Local Economic Stress Radar</title>
+    <link rel="stylesheet" href="src/styles.css?v=5" />
+    <script src="data/stress_data.js" defer></script>
+    <script src="src/app.js?v=5" defer></script>
+  </head>
+  <body data-page="area">
+    <header class="app-header">
+      <a class="brand" href="index.html" aria-label="Local Economic Stress Radar home">
+        <span class="brand-mark" aria-hidden="true">LESR</span>
+        <span>
+          <span class="brand-title">Economic Stress Radar</span>
+          <span class="brand-subtitle">Prototype v0.5</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Primary">
+        <a href="index.html" data-nav="radar">Radar</a>
+        <a href="area.html" data-nav="area">Area Detail</a>
+        <a href="validation.html" data-nav="validation">Validation</a>
+        <a href="sources.html" data-nav="sources">Sources</a>
+        <a href="roadmap.html" data-nav="roadmap">Roadmap</a>
+      </nav>
+
+      <div class="meta-chips" aria-label="Dataset status">
+        <span data-latest-month>Latest month</span>
+        <span data-data-mode>Demo data</span>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-title compact">
+        <div>
+          <p class="eyebrow">Area detail</p>
+          <h1 id="areaPageTitle">Selected local economy</h1>
+        </div>
+        <p id="areaPageSubtitle">Labor, housing, business, income, and industry concentration signals.</p>
+      </section>
+
+      <section id="areaBrief" class="decision-deck" aria-label="Selected area operating brief"></section>
+
+      <section class="area-layout">
+        <aside class="panel rank-panel area-selector" aria-label="Choose area">
+          <div class="side-controls">
+            <label>
+              <span>Search</span>
+              <input id="searchInput" type="search" placeholder="Metro, county, or state" />
+            </label>
+            <label>
+              <span>Geography</span>
+              <select id="levelFilter">
+                <option value="all">All</option>
+                <option value="cbsa">CBSAs</option>
+                <option value="county">Counties</option>
+              </select>
+            </label>
+            <label>
+              <span>Risk band</span>
+              <select id="riskFilter">
+                <option value="all">All bands</option>
+                <option value="high">High</option>
+                <option value="watch">Watch</option>
+                <option value="stable">Stable</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="section-heading tight">
+            <div>
+              <p class="eyebrow">Ranked movers</p>
+              <h2>Choose an area</h2>
+            </div>
+            <span id="resultCount" class="count-pill">0</span>
+          </div>
+          <div id="rankList" class="rank-list"></div>
+        </aside>
+
+        <section class="panel detail-panel detail-panel-large" aria-label="Selected area detail">
+          <div id="detailContent"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

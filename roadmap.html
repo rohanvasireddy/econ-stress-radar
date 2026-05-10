@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Roadmap | Local Economic Stress Radar</title>
+    <link rel="stylesheet" href="src/styles.css?v=5" />
+    <script src="data/stress_data.js" defer></script>
+    <script src="src/app.js?v=5" defer></script>
+  </head>
+  <body data-page="roadmap">
+    <header class="app-header">
+      <a class="brand" href="index.html" aria-label="Local Economic Stress Radar home">
+        <span class="brand-mark" aria-hidden="true">LESR</span>
+        <span>
+          <span class="brand-title">Economic Stress Radar</span>
+          <span class="brand-subtitle">Prototype v0.5</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Primary">
+        <a href="index.html" data-nav="radar">Radar</a>
+        <a href="area.html" data-nav="area">Area Detail</a>
+        <a href="validation.html" data-nav="validation">Validation</a>
+        <a href="sources.html" data-nav="sources">Sources</a>
+        <a href="roadmap.html" data-nav="roadmap">Roadmap</a>
+      </nav>
+
+      <div class="meta-chips" aria-label="Dataset status">
+        <span data-latest-month>Latest month</span>
+        <span data-data-mode>Demo data</span>
+      </div>
+    </header>
+
+    <main class="page-shell narrow">
+      <section class="page-title">
+        <div>
+          <p class="eyebrow">Build next</p>
+          <h1>Turn the prototype into a real econ data product.</h1>
+        </div>
+        <p>
+          The next work should reduce data risk before adding more modeling or AI surface area.
+        </p>
+      </section>
+
+      <section class="decision-deck">
+        <article class="decision-card decision-card-primary">
+          <span class="decision-kicker">Product thesis</span>
+          <strong>Trust the source, then trust the score.</strong>
+          <small>The best next version should feel boringly reliable before it feels intelligent.</small>
+        </article>
+        <article class="decision-card">
+          <span class="decision-kicker">Two-week win</span>
+          <strong>Real LAUS plus one credible backtest.</strong>
+          <small>That turns this from a UI demo into a defensible econ-data project.</small>
+        </article>
+        <article class="decision-card">
+          <span class="decision-kicker">Avoid</span>
+          <strong>Adding AI briefs too early.</strong>
+          <small>Generated text should summarize trusted drivers, not hide weak data plumbing.</small>
+        </article>
+      </section>
+
+      <section class="roadmap-grid">
+        <article class="panel roadmap-card">
+          <span>01</span>
+          <h2>Real LAUS ingestion</h2>
+          <p>Replace demo labor values with BLS LAUS county monthly unemployment, labor force, and employment data.</p>
+        </article>
+        <article class="panel roadmap-card">
+          <span>02</span>
+          <h2>Industry concentration</h2>
+          <p>Add QCEW latest-available employment, wage, and establishment features by county and sector.</p>
+        </article>
+        <article class="panel roadmap-card">
+          <span>03</span>
+          <h2>Release calendar</h2>
+          <p>Attach observation dates, release dates, and lag rules to every source before scoring historical periods.</p>
+        </article>
+        <article class="panel roadmap-card">
+          <span>04</span>
+          <h2>Rolling backtest</h2>
+          <p>Evaluate unemployment spike and payroll decline prediction with rolling-origin splits.</p>
+        </article>
+        <article class="panel roadmap-card">
+          <span>05</span>
+          <h2>User interviews</h2>
+          <p>Test CBSA and county detail pages with regional economic development and workforce users.</p>
+        </article>
+        <article class="panel roadmap-card">
+          <span>06</span>
+          <h2>AI briefs later</h2>
+          <p>Add generated narratives only after deterministic drivers and source provenance are trusted.</p>
+        </article>
+      </section>
+
+      <section class="panel table-panel">
+        <p class="eyebrow">Milestone plan</p>
+        <h2>What done should look like</h2>
+        <div class="data-table three-col">
+          <div class="table-row table-head"><span>Phase</span><span>Output</span><span>Acceptance test</span></div>
+          <div class="table-row"><span>Data foundation</span><span>LAUS and QCEW loaders with source metadata.</span><span>Rebuilds the demo contract from real public files.</span></div>
+          <div class="table-row"><span>Vintage backtest</span><span>Rolling monthly panel with release-lag masking.</span><span>No feature uses information unavailable on score date.</span></div>
+          <div class="table-row"><span>User workflow</span><span>Area pages for priority metros and counties.</span><span>Users can explain why each top-ranked place appears.</span></div>
+          <div class="table-row"><span>Model upgrade</span><span>Regularized baseline plus calibrated tree model.</span><span>Lift beats transparent score without losing interpretability.</span></div>
+        </div>
+      </section>
+
+      <section class="roadmap-grid">
+        <article class="panel roadmap-card">
+          <span>Owner loop</span>
+          <h2>Weekly operating rhythm</h2>
+          <p>Ship one source, one validation check, and one UI improvement each week until real users trust the signal.</p>
+        </article>
+        <article class="panel roadmap-card">
+          <span>Research loop</span>
+          <h2>Interview targets</h2>
+          <p>Regional economic development teams, workforce boards, bank credit analysts, and public-sector budget offices.</p>
+        </article>
+        <article class="panel roadmap-card">
+          <span>Product loop</span>
+          <h2>Premium wedge</h2>
+          <p>Paid value comes from alerts, exports, source confidence, and drilldowns, not generic macro commentary.</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
